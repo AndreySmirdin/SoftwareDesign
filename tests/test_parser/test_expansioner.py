@@ -13,7 +13,7 @@ class ExpansionerTestCase(unittest.TestCase):
         self.assertEqual('exit', self.expansioner.do_all_expansions('$a$b'))
 
     def test_with_double_quotes(self):
-        self.assertEqual('"world  239', self.expansioner.do_all_expansions('"$hello"  $c'))
+        self.assertEqual('"world"  239', self.expansioner.do_all_expansions('"$hello"  $c'))
 
     def test_with_sinle_quptes(self):
-        self.assertEqual('"world  \'$c\'', self.expansioner.do_all_expansions('"$hello"  \'$c\''))
+        self.assertEqual('"world"  \'$c\'', self.expansioner.do_all_expansions('"$hello"  \'$c\''))
