@@ -1,15 +1,12 @@
+from src.parser.parsing_utils import check_quotes_correctness
+
+
 class Reader(object):
 
     @classmethod
     def read(cls):
         result = input()
-        while cls.expect_another_line(result):
+        while not check_quotes_correctness(result):
             result += '\n'
             result += input()
         return result
-
-    @classmethod
-    def expect_another_line(cls, result):
-        if result.count('\'') % 2 != 0 or result.count('\"') % 2 != 0:
-            return True
-        return False
