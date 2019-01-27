@@ -2,11 +2,19 @@ from src.parser.parsing_utils import find_symbols_not_in_quotes
 
 
 class SplitterIntoCommands(object):
+    """
+    Class that is responsible for splitting input into commands and commands into words.
+    """
     PIPE = '|'
     SPLITTETS = [' ', '\t', '\n']
 
     @classmethod
     def split_into_commands(cls, data):
+        """
+        Splitting input into commands.
+        :param data: input
+        :return: list of commands. Each commands is a list of words.
+        """
         return cls._split_each_command_into_words(cls._split_with_characters_not_in_quotes(data, cls.PIPE))
 
     @classmethod

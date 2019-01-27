@@ -1,4 +1,10 @@
 def find_unescaped_symbols(user_input, interesting_symbols):
+    """
+    Find characters that have special meaning.
+    :param user_input: input
+    :param interesting_symbols: list of characters that we want to check
+    :return: indices of unescaped characters
+    """
     in_single_quotes = False
     in_double_quotes = False
     result = []
@@ -11,6 +17,12 @@ def find_unescaped_symbols(user_input, interesting_symbols):
 
 
 def find_symbols_not_in_quotes(data, characters):
+    """
+    Finding characters that are not in quotes.
+    :param data: input
+    :param characters: list of characters that we want to check
+    :return: indices of characters that are not in quotes
+    """
     in_single_quotes = False
     in_double_quotes = False
     result = []
@@ -24,6 +36,10 @@ def find_symbols_not_in_quotes(data, characters):
 
 
 def check_quotes_correctness(data):
+    """
+    Check if all quotes are closed.
+    :return: True if the string is valid.
+    """
     in_single_quotes = False
     in_double_quotes = False
     for char in data:
@@ -33,6 +49,11 @@ def check_quotes_correctness(data):
 
 
 def remove_quotes(commands):
+    """
+    Removing unescaped quotes for all words.
+    :param commands: list of commands each of them is a list of arguments
+    :return: Commands without quotes
+    """
     result = []
     for command in commands:
         result.append([])

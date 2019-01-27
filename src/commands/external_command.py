@@ -4,7 +4,9 @@ from src.commands.abstract_command import AbstractCommand
 
 
 class ExternalCommand(AbstractCommand):
-
+    """
+    Calling an external command.
+    """
     @classmethod
     def name(cls):
         return ''

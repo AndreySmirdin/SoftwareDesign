@@ -2,6 +2,10 @@ from src.commands.abstract_command import AbstractCommand
 
 
 class Cat(AbstractCommand):
+    """
+    Simple cat that prints file that was given as it's first argument.
+    """
+
     name = 'cat'
 
     @classmethod

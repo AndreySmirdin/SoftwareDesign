@@ -2,6 +2,9 @@ from src.commands.abstract_command import AbstractCommand
 
 
 class Wc(AbstractCommand):
+    """
+    Wc command that counts stat for the file that was given as first argument.
+    """
     name = 'wc'
 
     @classmethod

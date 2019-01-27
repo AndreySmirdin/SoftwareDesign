@@ -8,6 +8,9 @@ from src.commands.wc import Wc
 
 
 class Executor(object):
+    """
+    Class that calls commands that should be executed.
+    """
     ASSIGNMENT_PATTERN = re.compile('[a-zA-Z]+?=\w*')
 
     EXIT = 'exit'
@@ -18,9 +21,18 @@ class Executor(object):
                           Pwd]
 
     def __init__(self, variables):
+        """
+        :param variables: Dictionary with variables.
+        """
         self.variables = variables
 
     def execute(self, commands):
+        """
+        Executing all commands one by one. Output of a command becomes input for the next one.
+        :param commands: list of commands
+        :return: a pair. First value is a boolean that is True if `exit` command was called. The second
+        value is the result of executing all commands.
+        """
         if len(commands) == 1 and len(commands[0]) == 1 and re.match(self.ASSIGNMENT_PATTERN, commands[0][0]):
             splitted = commands[0][0].split('=', 1)
             self.variables[splitted[0]] = splitted[1]

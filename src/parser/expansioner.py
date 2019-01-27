@@ -2,10 +2,21 @@ from src.parser.parsing_utils import find_unescaped_symbols
 
 
 class Expansioner(object):
+    """
+    Class that is responsible for performing all expansions for a given input.
+    """
     def __init__(self, variables):
+        """
+        :param variables: Dictionary with variables.
+        """
         self.variables = variables
 
     def do_all_expansions(self, user_input):
+        """
+        Performing all expansions. By now only variables are replaced.
+        :param user_input: input
+        :return: string where all expansions were made.
+        """
         return self._perform_variables_expansion(user_input)
 
     def _perform_variables_expansion(self, user_input):
