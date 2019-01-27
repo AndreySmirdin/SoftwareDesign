@@ -1,6 +1,6 @@
 import unittest
 
-from src.parser.preprocessor import Preprocessor
+from src.parser.parsing_utils import Preprocessor
 
 
 class PreprocessorTestCase(unittest.TestCase):

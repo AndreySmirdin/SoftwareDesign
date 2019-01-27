@@ -20,3 +20,7 @@ class Interpreter(object):
                     break
             except Exception as e:
                 e.with_traceback()
+
+
+if __name__ == "__main__":
+    Interpreter().run()
