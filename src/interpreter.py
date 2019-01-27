@@ -21,7 +21,7 @@ class Interpreter(object):
                 if not should_continue:
                     break
             except Exception as e:
-                e.with_traceback()
+                print(e)
 
 
 if __name__ == "__main__":

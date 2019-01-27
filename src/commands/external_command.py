@@ -4,6 +4,7 @@ from src.commands.abstract_command import AbstractCommand
 
 
 class ExternalCommand(AbstractCommand):
+
     @classmethod
     def name(cls):
         return ''
@@ -14,5 +15,12 @@ class ExternalCommand(AbstractCommand):
             result = subprocess.run(args, check=True, stdin=stdin, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             return result.stdout.decode('utf-8')
         except subprocess.CalledProcessError as e:
-            print(e.stderr)
-            raise IOError
+            raise ExternalCommandException(e.stderr.decode('utf-8'))
+        except FileNotFoundError:
+            raise ExternalCommandException(args[0] + ": command not found")
+
+
+class ExternalCommandException(Exception):
+
+    def __init__(self, message):
+        self.message = message

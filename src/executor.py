@@ -42,4 +42,4 @@ class Executor(object):
             if command[0] == supported_command.name:
                 return True, supported_command.run(command[1:], input_file)
 
-        return True, ExternalCommand.run(command[1:], input_file)
+        return True, ExternalCommand.run(command, input_file)

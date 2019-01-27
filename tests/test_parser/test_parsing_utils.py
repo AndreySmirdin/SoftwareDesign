@@ -16,5 +16,5 @@ class PreprocessorTestCase(unittest.TestCase):
         self.assertEqual(result, [4, 9, 15])
 
     def test_remove_quotes(self):
-        result = remove_quotes([['"echo"', '"\'"', '\'"\"\'']])
-        self.assertEqual([['echo', '\'', '""']], result)
+        result = remove_quotes([['"echo"', '"\'"', '\'"\"\''], ['ec"ho"']])
+        self.assertEqual([['echo', '\'', '""'], ['echo']], result)

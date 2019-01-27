@@ -10,13 +10,15 @@ def find_unescaped_symbols(user_input, interesting_symbols):
     return result
 
 
-def find_symbols_not_in_quotes(data, character):
+def find_symbols_not_in_quotes(data, characters):
     in_single_quotes = False
     in_double_quotes = False
     result = []
     for (index, char) in enumerate(data):
+        if not in_single_quotes and not in_double_quotes and char in characters:
+            result.append(index)
         in_single_quotes, in_double_quotes = _change_state(in_single_quotes, in_double_quotes, char)
-        if not in_single_quotes and not in_double_quotes and char == character:
+        if not in_single_quotes and not in_double_quotes and char in characters and index not in result:
             result.append(index)
     return result
 
@@ -35,10 +37,12 @@ def remove_quotes(commands):
     for command in commands:
         result.append([])
         for word in command:
-            if word[0] == word[-1] and (word[0] == '\'' or word[0] == '\"'):
-                result[-1].append(word[1:-1])
-            else:
-                result[-1].append(word)
+            to_be_removed = find_symbols_not_in_quotes(word, ['\'', '\"'])
+            new_word = ""
+            for (index, c) in enumerate(word):
+                if index not in to_be_removed:
+                    new_word += c
+            result[-1].append(new_word)
     return result
 
 

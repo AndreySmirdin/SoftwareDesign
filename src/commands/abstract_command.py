@@ -12,6 +12,3 @@ class AbstractCommand(ABC):
     @abstractmethod
     def run(cls, args, stdin):
         pass
-
-    # @classmethod
-    # def open_if_exists(cls, file):
