@@ -15,7 +15,9 @@ class Interpreter(object):
             user_input = Reader.read()
             commands = self.parser.parse(user_input)
             try:
-                should_continue = self.executor.execute(commands)
+                should_continue, result = self.executor.execute(commands)
+                if result:
+                    print(result)
                 if not should_continue:
                     break
             except Exception as e:

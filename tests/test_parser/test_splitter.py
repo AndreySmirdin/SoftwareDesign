@@ -11,3 +11,7 @@ class SplitterTestCase(unittest.TestCase):
 
     def test_with_quotes(self):
         self.assertEqual([['echo', '\"a b\"', 'c']], self.splitter.split_into_commands("echo \"a b\" c"))
+
+    def test_with_pipes(self):
+        self.assertEqual([['cat', 'file.txt'], ['wc'], ['wc']],
+                         self.splitter.split_into_commands('cat file.txt | wc | wc'))

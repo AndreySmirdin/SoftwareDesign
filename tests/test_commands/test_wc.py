@@ -10,5 +10,5 @@ class WcTestCase(unittest.TestCase):
 
     @CreateTmpFile(tmp_file, text)
     def test_wc(self):
-        self.assertEqual((1, 2, 11), Wc.run([self.tmp_file], None))
-        self.assertEqual((1, 2, 11), Wc.run([], self.tmp_file))
+        self.assertEqual('    1    2    11', Wc.run([self.tmp_file], None))
+        self.assertEqual('    1    2    11', Wc.run([], self.text))

@@ -6,6 +6,8 @@ class Cat(AbstractCommand):
 
     @classmethod
     def run(cls, args, stdin):
-        file_name = args[0] if args else stdin
-        with open(file_name, 'r') as file:
-            return file.readlines()
+        if args:
+            with open(args[0], 'r') as file:
+                return ''.join(file.readlines())
+        else:
+            return stdin
