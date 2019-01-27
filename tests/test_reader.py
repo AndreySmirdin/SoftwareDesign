@@ -4,7 +4,7 @@ from unittest.mock import patch
 from src.reader import Reader
 
 
-class ContainersTestCase(unittest.TestCase):
+class ReaderTestCase(unittest.TestCase):
 
     def test_get_input_stacks_processed_input_correctly(self):
         self._run_reader(['echo 123'], 'echo 123')

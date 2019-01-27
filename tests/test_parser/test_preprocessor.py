@@ -3,7 +3,7 @@ import unittest
 from src.parser.preprocessor import Preprocessor
 
 
-class ContainersTestCase(unittest.TestCase):
+class PreprocessorTestCase(unittest.TestCase):
 
     def test_preprocessor_single_quotes(self):
         preprocessor = Preprocessor()
