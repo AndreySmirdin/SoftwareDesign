@@ -1,3 +1,5 @@
+import os
+
 from src.parser.parsing_utils import find_unescaped_symbols
 
 
@@ -5,6 +7,7 @@ class Expansioner(object):
     """
     Class that is responsible for performing all expansions for a given input.
     """
+
     def __init__(self, variables):
         """
         :param variables: Dictionary with variables.
@@ -30,7 +33,8 @@ class Expansioner(object):
                 while i < len(user_input) and user_input[i] not in ['\'', '\"', ' ', '\t', '\n', '$']:
                     name += user_input[i]
                     i += 1
-                result += self.variables.get(name, '')
+                value = self.variables.get(name, '')
+                result += value if value else os.environ.get(name, '')
             else:
                 result += user_input[i]
                 i += 1
