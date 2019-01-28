@@ -16,8 +16,8 @@ class ExecutorTestCase(unittest.TestCase):
         self.assertEqual((False, None), result)
 
     def test_external_command(self):
-        _, result = self.executor.execute([['ls', '-l']])
-        self.assertIn('test_executor.py', result)
+        _, result = self.executor.execute([['man', 'ls']])
+        self.assertIn('ls - list directory contents', result)
 
     def test_unexisting_command(self):
         with self.assertRaises(ExternalCommandException):
