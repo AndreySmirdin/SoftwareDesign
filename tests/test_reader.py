@@ -13,6 +13,10 @@ class ReaderTestCase(unittest.TestCase):
         self._run_reader(['echo \'123', '\"239', '\"', '\''],
                          'echo \'123\n\"239\n\"\n\'')
 
+    def test_pipe(self):
+        self._run_reader(['cat file.txt |', 'exit'],
+                         'cat file.txt |\nexit')
+
     def _run_reader(self, user_input, expected_result):
         with patch('builtins.input', side_effect=user_input):
             stacks = Reader.read()

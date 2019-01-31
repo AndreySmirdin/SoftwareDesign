@@ -4,7 +4,7 @@ from src.commands.cat import Cat
 from tests.test_commands.create_tmp_file import CreateTmpFile
 
 
-class WcTestCase(unittest.TestCase):
+class CatTestCase(unittest.TestCase):
     text = 'Hello world'
     tmp_file = 'tmp.txt'
 

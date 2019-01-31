@@ -12,7 +12,7 @@ class Reader(object):
         :return: user's input
         """
         result = input()
-        while not check_quotes_correctness(result):
+        while not check_quotes_correctness(result) or result.strip().endswith('|'):
             result += '\n'
             result += input()
         return result
