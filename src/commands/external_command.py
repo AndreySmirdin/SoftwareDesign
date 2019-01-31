@@ -14,7 +14,8 @@ class ExternalCommand(AbstractCommand):
     @classmethod
     def run(cls, args, stdin):
         try:
-            result = subprocess.run(args, check=True, stdin=stdin, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            result = subprocess.run(args, check=True, input=stdin.encode(), stdout=subprocess.PIPE,
+                                    stderr=subprocess.PIPE)
             return result.stdout.decode('utf-8')
         except subprocess.CalledProcessError as e:
             raise ExternalCommandException(e.stderr.decode('utf-8'))
