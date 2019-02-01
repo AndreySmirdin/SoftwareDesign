@@ -3,6 +3,7 @@ import re
 from src.commands.cat import Cat
 from src.commands.echo import Echo
 from src.commands.external_command import ExternalCommand
+from src.commands.grep import Grep
 from src.commands.pwd import Pwd
 from src.commands.wc import Wc
 
@@ -18,7 +19,8 @@ class Executor(object):
     SUPPORTED_COMMANDS = [Echo,
                           Cat,
                           Wc,
-                          Pwd]
+                          Pwd,
+                          Grep]
 
     def __init__(self, variables):
         """
