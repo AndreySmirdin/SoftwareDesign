@@ -35,6 +35,8 @@ class Executor(object):
         :return: a pair. First value is a boolean that is True if `exit` command was called. The second
         value is the result of executing all commands.
         """
+        if not commands[0]:
+            return True, None
         if len(commands) == 1 and len(commands[0]) == 1 and re.match(self.ASSIGNMENT_PATTERN, commands[0][0]):
             splitted = commands[0][0].split('=', 1)
             self.variables[splitted[0]] = splitted[1]
