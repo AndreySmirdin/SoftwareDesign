@@ -7,7 +7,6 @@ from src.commands.abstract_command import AbstractCommand
 class Grep(AbstractCommand):
     """
     Grep command that supports -i, -w and -A NUM keys (they behave the way they do in bash).
-
     """
     name = 'grep'
 
