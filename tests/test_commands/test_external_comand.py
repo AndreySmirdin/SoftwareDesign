@@ -10,4 +10,4 @@ class ExternalCommandTestCase(unittest.TestCase):
 
     @CreateTmpFile(tmp_file, text)
     def test_with_external_cat(self):
-        self.assertEqual(self.text, ExternalCommand.run(['cat', self.tmp_file], None))
+        self.assertEqual("123", ExternalCommand.run(['cat', self.tmp_file], None))
