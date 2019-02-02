@@ -1,4 +1,6 @@
-os: windows
+os:
+  - linux
+  - windows
 language: python
 python:
   - "3.5"
