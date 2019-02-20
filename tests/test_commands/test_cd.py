@@ -10,3 +10,4 @@ class CdTestCase(unittest.TestCase):
         path = os.getcwd()
         Cd.run("/", None)
         self.assertNotEqual(os.getcwd(), path)
+        Cd.run(path, None)
