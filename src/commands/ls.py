@@ -11,4 +11,4 @@ class Ls(AbstractCommand):
 
     @classmethod
     def run(cls, args, stdin):
-        print(os.listdir().join('\n'))
+        return '\n'.join(os.listdir("."))

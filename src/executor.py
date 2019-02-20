@@ -5,6 +5,8 @@ from src.commands.echo import Echo
 from src.commands.external_command import ExternalCommand
 from src.commands.pwd import Pwd
 from src.commands.wc import Wc
+from src.commands.ls import Ls
+from src.commands.cd import Cd
 
 
 class Executor(object):
@@ -18,7 +20,10 @@ class Executor(object):
     SUPPORTED_COMMANDS = [Echo,
                           Cat,
                           Wc,
-                          Pwd]
+                          Pwd,
+                          Ls,
+                          Cd
+                          ]
 
     def __init__(self, variables):
         """
