@@ -44,13 +44,13 @@ class Grep(AbstractCommand):
         strings_after = 0 if known_args.A is None else known_args.A
 
         compiled_pattern = re.compile(pattern, grep_args)
-        result = []
-        i = 0
-        while i < len(data):
+        in_result = [False for _ in range(len(data))]
+        for i in range(len(data)):
             if re.search(compiled_pattern, data[i]):
-                result.append(data[i])
-                result.extend(data[i + 1: i + strings_after + 1])
-                i += strings_after
-            i += 1
-
+                for j in range(strings_after + 1):
+                    in_result[i + j] = True
+        result = []
+        for (i, line) in enumerate(data):
+            if in_result[i]:
+                result.append(line)
         return '\n'.join(result)
