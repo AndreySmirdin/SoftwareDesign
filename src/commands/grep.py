@@ -25,6 +25,8 @@ class Grep(AbstractCommand):
             known_args, unknown_args = parser.parse_known_args(args)
         except argparse.ArgumentError:
             raise ValueError("grep: invalid arguments\n" + parser.format_help())
+        except SystemExit:
+            return
 
         pattern = unknown_args[0]
 
@@ -43,12 +45,16 @@ class Grep(AbstractCommand):
 
         strings_after = 0 if known_args.A is None else known_args.A
 
+        if strings_after < 0:
+            raise ValueError("grep: -A should be a non-negative integer. You provided {}.".format(strings_after))
+
         compiled_pattern = re.compile(pattern, grep_args)
         in_result = [False for _ in range(len(data))]
         for i in range(len(data)):
             if re.search(compiled_pattern, data[i]):
                 for j in range(strings_after + 1):
-                    in_result[i + j] = True
+                    if i + j < len(data):
+                        in_result[i + j] = True
         result = []
         for (i, line) in enumerate(data):
             if in_result[i]:
