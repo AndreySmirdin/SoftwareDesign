@@ -11,4 +11,8 @@ class Cd(AbstractCommand):
 
     @classmethod
     def run(cls, args, stdin):
+        if not args:
+            args = ['~']
+        if isinstance(args, str):
+            args = [args]
         os.chdir(args[0])
