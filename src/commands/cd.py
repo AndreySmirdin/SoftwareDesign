@@ -12,7 +12,7 @@ class Cd(AbstractCommand):
     @classmethod
     def run(cls, args, stdin):
         if not args:
-            args = ['~']
+            args = [os.path.expanduser("~")]
         if isinstance(args, str):
             args = [args]
         os.chdir(args[0])
