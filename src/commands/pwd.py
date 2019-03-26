@@ -11,4 +11,4 @@ class Pwd(AbstractCommand):
 
     @classmethod
     def run(cls, args, stdin):
-        print(os.getcwd())
+        return os.getcwd()
