@@ -30,6 +30,8 @@ class Grep(AbstractCommand):
 
         pattern = unknown_args[0]
 
+        if len(unknown_args) > 2:
+            raise ValueError("grep: Too many arguments.\n" + parser.format_help())
         if len(unknown_args) > 1:
             with open(unknown_args[1], 'r') as file:
                 data = file.read().split('\n')
