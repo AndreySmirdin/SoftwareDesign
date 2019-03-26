@@ -3,6 +3,7 @@ import re
 from src.commands.cat import Cat
 from src.commands.echo import Echo
 from src.commands.external_command import ExternalCommand
+from src.commands.grep import Grep
 from src.commands.pwd import Pwd
 from src.commands.wc import Wc
 
@@ -18,7 +19,8 @@ class Executor(object):
     SUPPORTED_COMMANDS = [Echo,
                           Cat,
                           Wc,
-                          Pwd]
+                          Pwd,
+                          Grep]
 
     def __init__(self, variables):
         """
@@ -33,6 +35,8 @@ class Executor(object):
         :return: a pair. First value is a boolean that is True if `exit` command was called. The second
         value is the result of executing all commands.
         """
+        if not commands[0]:
+            return True, None
         if len(commands) == 1 and len(commands[0]) == 1 and re.match(self.ASSIGNMENT_PATTERN, commands[0][0]):
             splitted = commands[0][0].split('=', 1)
             self.variables[splitted[0]] = splitted[1]
